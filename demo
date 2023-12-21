@@ -1,0 +1,216 @@
+
+// background color :#E3EDFC
+// button color:#C41F3F
+
+
+
+
+const table = {
+   entity:[{
+    tname:"USER",
+    columns:[
+      [{key:'value'},[{all:'all'}]],
+      {
+        key:"id",
+        value:"1",
+        bool:true,
+        
+      },
+      {
+        key:"name",
+        value:"mani"
+      },
+      {
+        key:"company",
+        value:"IBM"
+      }
+    ]
+  },
+  {
+    tname:"PROFILE",
+    columns:[
+      {
+        key:"id",
+        value:"1",
+        obj2:{}
+      },
+      {
+        key:"name",
+        value:"manikandan"
+      },
+      {
+        key:"company",
+        value:"Wipro"
+      }
+      
+    ],
+    relationship:[
+        {
+           parent:"table3",
+           isOptional:[
+             {status:"Y"}
+           ]
+        }
+        ]
+  },
+  {
+    tname:"table3",
+    columns:[
+      {
+        key:"id",
+        value:"1"
+      },
+      {
+        key:"name",
+        value:"manikanth"
+      },
+      {
+        key:"company",
+        value:"Honeywell"
+      }
+    ],
+     relationship:[
+        {
+           parent:"USER",
+           isOptional:[{status:"Y",ddd:"ppp"}]
+        }
+        ]
+  }]
+}
+
+const updateee = {
+  one:{
+    oneToOne : "1to1",
+  },two:{
+    oneToOne : "1to2"
+  },
+  three:{
+    oneToOne : [{"1to3":"popopo"}]
+  },four:{
+    oneToOne : "1to4"
+  }
+}
+
+
+
+
+
+let newArray = []
+// function ObjectMapping(data,index){
+//   Object.keys(data).map(key=>{
+//     entity[index].index = `key${index}`
+    
+//     if(index && (key == 'relationship')){
+//       onUpdateJSON(data[key][0],entity[index].tname)
+//     }
+    
+//     if(Array.isArray(data[key])){
+//       mapping(data[key])
+//     }else{
+//        if(typeof data[key] == 'object'){
+//          ObjectMapping(data[key],index)
+//        }else{
+//           // console.log(data[key],index)
+//        }
+//     }
+//   })
+// }
+
+// let array = []
+// function mapping(entity){
+//   if(Array.isArray(entity)){
+//      entity.map((parent,index)=>{
+       
+//     if(Object.keys(parent).length>0){
+       
+//       ObjectMapping(parent,index)
+//     }
+//   })
+//   } else{
+//       if(typeof entity == 'object'){
+//         ObjectMapping(entity,null)
+//       }
+//     }
+
+// }
+// let clonedDATA = [...entity]
+// let relationShipArray = []
+// function onUpdateJSON(relationDetail,tname){
+//   clonedDATA.find((data,i)=>{
+//     if(data['tname'] == relationDetail.parent){
+//       relationShipArray.push({
+//         name : tname,
+//         isOptional: relationDetail.isOptional[0].status
+//       })
+//       clonedDATA[i].relationship = relationShipArray
+//     }
+//   })
+//  // console.log(clonedDATA,"clonedDATA")
+// }
+
+
+// mapping(entity)
+function objectToPaths(data) {
+
+  var validId = /^[a-z_$][a-z0-9_$]*$/i;
+
+  doIt(data, "updateee");
+
+  function doIt(data, s) {
+
+    if (data && typeof data === "object") {
+
+      if (Array.isArray(data)) {
+
+        for (var i = 0; i < data.length; i++) {
+
+          doIt(data[i], s + "[" + i + "]");
+          if(!Array.isArray(data[i])){
+              data[i].path = `${s}[${i}]`;
+             }
+        }
+
+      } else {
+
+        for (var p in data) {
+
+          if (!Array.isArray(data[p])) {
+            data[p].path = s;
+          }
+
+          if (validId.test(p)) {
+
+            doIt(data[p], s + "." + p);
+
+          } else {
+
+            doIt(data[p], s + '["' + p + '"]');
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  // console.log(table.Entities[3].methods[4].conditionparams)
+
+}
+const copiedObject = JSON.parse(JSON.stringify(updateee));
+objectToPaths(copiedObject)
+// console.log(table)
+// console.log(copiedObject)
+// let string  = JSON.Stringyfy('.three.oneToOne[0]')
+let str = 'updateee.three.oneToOne[0]'
+let st = str.replace('');
+console.log(st)
+
+
+
+
+
+
+
