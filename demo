@@ -210,6 +210,95 @@ let st = str.replace('');
 console.log(st)
 
 
+//chat-app-css
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+.aside{
+  width: 75px;
+  height: 100vh;
+  background-color: rgb(241, 236, 221);
+  display: flex;
+  flex-direction: column;
+  padding: 0 8px;
+  text-align: center;
+}
+/* ul above dev */
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: rgb(210, 240, 185);
+}
+.logo{
+line-height: 70px;
+}
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.nav-link {
+  display: block;
+  margin: 7px 0;
+}
+
+.nav-a-link {
+  display: inline-block;
+  height: 27px;
+  line-height: 25px;
+  background-color: coral;
+}
+.mt_a {
+margin-top: auto;
+}
+
+
+
+
+//chat-app-html
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="aside">
+    <div>
+     <a href="#" class="logo">Logo</a>
+    </div>
+      <div class="nav-menu">
+        <ul class="nav-list">
+                  <li  class="nav-link"> <a class="nav-a-link" href="#">icons </a> </li>
+                  <li  class="nav-link"> <a class="nav-a-link" href="#">icons </a> </li>
+                  <li  class="nav-link"> <a class="nav-a-link" href="#">icons </a> </li>
+                  <li  class="nav-link"> <a class="nav-a-link" href="#">icons </a> </li>
+                  <li  class="nav-link"> <a class="nav-a-link" href="#">icons </a> </li>
+                  <li  class="nav-link"> <a class="nav-a-link" href="#">icons </a> </li>
+                  <li  class="nav-link"> <a class="nav-a-link" href="#">icons </a> </li>
+
+                  <li  class="nav-link mt_a"> <a class="nav-a-link" href="#">icons </a> </li>
+                  <li  class="nav-link"> <a class="nav-a-link" href="#">icons </a> </li>
+
+        </ul>
+    </div>
+    
+  </div>
+</body>
+</html>
+
+
+
+
+
 
 
 
